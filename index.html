@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./dist/script.js" defer></script>
+
+    <title>Frontend Mentor | Mortgage repayment calculator</title>
+  </head>
+  <body>
+    <main class="page">
+      <div class="calculator">
+        <!-- ========== Form ========== -->
+        <section class="panel panel--form" aria-labelledby="form-title">
+          <header class="form-header">
+            <h1 class="form-title" id="form-title">Mortgage Calculator</h1>
+            <button class="link-button" type="button" id="clear-all">
+              Clear All
+            </button>
+          </header>
+
+          <form id="mortgage-form" novalidate>
+            <!-- Mortgage amount -->
+            <div class="field">
+              <label class="field__label" for="amount">Mortgage Amount</label>
+              <div class="input-group" data-group="amount">
+                <span class="input-group__addon input-group__addon--start" aria-hidden="true">£</span>
+                <input
+                  class="input-group__input"
+                  type="text"
+                  id="amount"
+                  name="amount"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  aria-describedby="amount-error"
+                />
+              </div>
+              <p class="field__error" id="amount-error" hidden></p>
+            </div>
+
+            <!-- Term + rate -->
+            <div class="field-row">
+              <div class="field">
+                <label class="field__label" for="term">Mortgage Term</label>
+                <div class="input-group" data-group="term">
+                  <input
+                    class="input-group__input"
+                    type="text"
+                    id="term"
+                    name="term"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="term-error"
+                  />
+                  <span class="input-group__addon input-group__addon--end" aria-hidden="true">years</span>
+                </div>
+                <p class="field__error" id="term-error" hidden></p>
+              </div>
+
+              <div class="field">
+                <label class="field__label" for="rate">Interest Rate</label>
+                <div class="input-group" data-group="rate">
+                  <input
+                    class="input-group__input"
+                    type="text"
+                    id="rate"
+                    name="rate"
+                    inputmode="decimal"
+                    autocomplete="off"
+                    aria-describedby="rate-error"
+                  />
+                  <span class="input-group__addon input-group__addon--end" aria-hidden="true">%</span>
+                </div>
+                <p class="field__error" id="rate-error" hidden></p>
+              </div>
+            </div>
+
+            <!-- Mortgage type -->
+            <fieldset class="field fieldset" aria-describedby="type-error">
+              <legend class="field__label">Mortgage Type</legend>
+
+              <label class="radio">
+                <input type="radio" name="type" value="repayment" />
+                <span class="radio__text">Repayment</span>
+              </label>
+              <label class="radio">
+                <input type="radio" name="type" value="interest-only" />
+                <span class="radio__text">Interest Only</span>
+              </label>
+
+              <p class="field__error" id="type-error" hidden></p>
+            </fieldset>
+
+            <button class="btn" type="submit">
+              <img src="./assets/images/icon-calculator.svg" alt="" width="24" height="24" />
+              Calculate Repayments
+            </button>
+          </form>
+        </section>
+
+        <!-- ========== Results ========== -->
+        <section class="panel panel--results" aria-labelledby="results-heading">
+          <!-- Screen readers announce changes inside this region -->
+          <div class="results" id="results-region" aria-live="polite" aria-atomic="true">
+            <!-- Empty state -->
+            <div class="results__empty" id="results-empty">
+              <img
+                src="./assets/images/illustration-empty.svg"
+                alt=""
+                width="192"
+                height="192"
+              />
+              <h2 class="results__title" id="results-heading">Results shown here</h2>
+              <p class="results__text">
+                Complete the form and click “calculate repayments” to see what
+                your monthly repayments would be.
+              </p>
+            </div>
+
+            <!-- Completed state -->
+            <div class="results__done" id="results-done" hidden>
+              <h2 class="results__title results__title--left">Your results</h2>
+              <p class="results__text results__text--left">
+                Your results are shown below based on the information you
+                provided. To adjust the results, edit the form and click
+                “calculate repayments” again.
+              </p>
+
+              <div class="summary">
+                <p class="summary__label">Your monthly repayments</p>
+                <p class="summary__monthly" id="monthly-result"></p>
+                <hr class="summary__divider" />
+                <p class="summary__label">Total you'll repay over the term</p>
+                <p class="summary__total" id="total-result"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Yasmin Sherefa</a>.
+    </footer>
+  </body>
+</html>
